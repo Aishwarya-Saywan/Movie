@@ -33,6 +33,8 @@ public class ProductService {
 
 	public Product updateMapping(Integer id, Product product) {
 		Product productDB = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+		productDB.setName(product.getName());
+		productDB.setPrice(product.getPrice());
 		productRepository.save(productDB);
 		return productDB;
 
